@@ -19,9 +19,6 @@ export const HomePage = ({ }) => {
     return (
         <div className="container">
             <div className="centered-content">
-                <Typography.Title>
-                    Please select what you are testing in your
-                </Typography.Title>
                 <Row justify="space-around">
                     <Col span={12}>
                         <Form
