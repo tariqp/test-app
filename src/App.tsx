@@ -7,11 +7,15 @@ import { IAppContext } from './types';
 
 
 const defaultAppContext = {
+  formType: 'submit',
   script: '',
   isEmail: false,
   isPhone: false,
   emailSelector: '',
   phoneSelector: '',
+  setFormType: (value: any) => { 
+    return
+  },
   setIsEmail: (value: boolean) => {
     return;
   },
@@ -39,11 +43,14 @@ function App() {
   const [isPhone, setIsPhone] = useState<boolean>(false)
   const [script, setScript] = useState<string>('');
   const [emailSelector, setEmailSelector] = useState<string>('');
-  const [phoneSelector, setPhoneSelector] = useState<string>('asdasdasdas');
+  const [phoneSelector, setPhoneSelector] = useState<string>('');
+  const [formType, setFormType] = useState<any>('submit');
 
 
   const contextValue = useMemo(() => {
     return {
+      formType, 
+      setFormType,
       isEmail,
       setIsEmail,
       isPhone,
@@ -55,7 +62,7 @@ function App() {
       phoneSelector,
       setPhoneSelector
     }
-  }, [isEmail, setIsEmail, isPhone, setIsPhone, script, setScript, emailSelector, setEmailSelector, phoneSelector, setPhoneSelector]);
+  }, [formType, setFormType,isEmail, setIsEmail, isPhone, setIsPhone, script, setScript, emailSelector, setEmailSelector, phoneSelector, setPhoneSelector]);
 
 
   return (

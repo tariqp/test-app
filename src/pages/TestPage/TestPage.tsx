@@ -7,7 +7,7 @@ import { Button, Col, Form, Input, Row } from "antd";
 
 
 export const TestPage = ({ }) => {
-    const { script } = useContext(AppContext);
+    const { script, isEmail, isPhone } = useContext(AppContext);
     console.log(script)
 
     useEffect(() => {
@@ -19,21 +19,25 @@ export const TestPage = ({ }) => {
 
 
     return (
-       <Row justify="center" style={{marginTop: '20%'}}>
-        <Col >
-        <Form>
-            <Form.Item label="Email">
-                <Input />
-            </Form.Item>
-            <Form.Item label="Password">
-                <Input />
-            </Form.Item>
-            <Button type="primary" htmlType="submit">
-                Test
-            </Button>
-        </Form>
-        </Col>
-       </Row>
+        <Row justify="center" style={{ marginTop: '20%' }}>
+            <Col >
+                <Form className="test-form-auth">
+                    {isEmail && (
+                        <Form.Item label="Email">
+                            <Input className="test-email-auth"/>
+                        </Form.Item>
+                    )}
+                    {isPhone && (
+                        <Form.Item  label="Phone">
+                            <Input className="test-phone-auth" />
+                        </Form.Item>
+                    )}
+                    <Button type="primary" htmlType="submit" className="test-button-auth">
+                        Test
+                    </Button>
+                </Form>
+            </Col>
+        </Row>
 
     )
 }

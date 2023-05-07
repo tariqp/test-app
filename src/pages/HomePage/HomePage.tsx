@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 
 
 export const HomePage = ({ }) => {
-    const { isEmail, isPhone, setIsEmail, setIsPhone, setScript} = useContext(AppContext);
+    const { isEmail, isPhone, setIsEmail, setIsPhone, setScript, formType, setFormType } = useContext(AppContext);
     const navigate = useNavigate();
     console.log(isEmail);
 
-    const selectValidation = (email: boolean, phone: boolean) => { 
+    const selectValidation = (email: boolean, phone: boolean) => {
         setIsEmail(email);
         setIsPhone(phone);
     }
@@ -36,23 +36,25 @@ export const HomePage = ({ }) => {
                                         selectValidation(true, false);
                                     })} value="small">Only email</Radio.Button>
                                     <Radio.Button onClick={(() => {
-                                          selectValidation(false, true);
-                                    })}value="default">Only Phone</Radio.Button>
+                                        selectValidation(false, true);
+                                    })} value="default">Only Phone</Radio.Button>
                                     <Radio.Button onClick={(() => {
-                              selectValidation(true, true);
+                                        selectValidation(true, true);
                                     })}
-                                    value="large">Both</Radio.Button>
+                                        value="large">Both</Radio.Button>
                                 </Radio.Group>
                             </Form.Item>
                             <Form.Item label="Select type">
-                                <Select>
-                                    <Select.Option value="demo">On Change</Select.Option>
-                                    <Select.Option value="demo">On Select</Select.Option>
-                                    <Select.Option value="demo">On Blur</Select.Option>
-                                    <Select.Option value="demo">On Click</Select.Option>
+                                <Select onChange={(val) => {
+                                    setFormType(val);
+                                }}>
+                                    <Select.Option value="change">On Change</Select.Option>
+                                    <Select.Option value="select">On Select</Select.Option>
+                                    <Select.Option value="blur">On Blur</Select.Option>
+                                    <Select.Option value="click">On Click</Select.Option>
                                 </Select>
                             </Form.Item>
-                            {isEmail && (
+                            {/* {isEmail && (
                                 <Form.Item label="E-mail selector">
                                     <Input />
                                 </Form.Item>
@@ -62,18 +64,23 @@ export const HomePage = ({ }) => {
                                     <Input />
                                 </Form.Item>
                             )}
-                            <Form.Item label="Button selector">
-                                <Input />
-                            </Form.Item>
-                            <Form.Item label="Form selector">
-                                <Input />
-                            </Form.Item>
+                            {!(formType === 'select') && (
+                                                <Form.Item label="Button selector">
+                                                <Input />
+                                            </Form.Item>
+                            )} */}
+            
+                            {/* {formType === 'select' && (
+                                <Form.Item label="Form selector">
+                                    <Input />
+                                </Form.Item>
+                            )} */}
                             <Form.Item label="Script URL">
-                                <Input onChange={(event) => { 
+                                <Input onChange={(event) => {
                                     setScript(event.target.value);
-                                }}/>
+                                }} />
                             </Form.Item>
-                            <Button type="primary" htmlType="submit" style={{ marginLeft: '62%' }} onClick={() => { 
+                            <Button type="primary" htmlType="submit" style={{ marginLeft: '62%' }} onClick={() => {
                                 navigate('/test-app/test');
                             }}>
                                 Test your script
