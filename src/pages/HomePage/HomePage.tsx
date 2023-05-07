@@ -74,7 +74,7 @@ export const HomePage = ({ }) => {
                                 }}/>
                             </Form.Item>
                             <Button type="primary" htmlType="submit" style={{ marginLeft: '62%' }} onClick={() => { 
-                                navigate('/test');
+                                navigate('/test-app/test');
                             }}>
                                 Test your script
                             </Button>

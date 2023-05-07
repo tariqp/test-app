@@ -6,15 +6,11 @@ import { TestPage } from './TestPage';
 
 export const root: RouteObject[] = [
     {
-        path: '',
+        path: '/test-app',
         element: <HomePage />
     },
     {
-        path: '/select',
-        element: <DataPage />
-    },
-    {
-        path: '/test',
+        path: '/test-app/test',
         element: <TestPage />
     }
 ]

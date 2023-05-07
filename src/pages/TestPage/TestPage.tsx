@@ -13,6 +13,7 @@ export const TestPage = ({ }) => {
     useEffect(() => {
         const scriptElement = document.createElement('script');
         scriptElement.src = script;
+        scriptElement.type = "module"
         document.head.appendChild(scriptElement);
     }, [script]);
 
